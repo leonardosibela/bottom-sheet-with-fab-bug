@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), StringAdapter.Callbacks {
     private fun setupBottomSheetFab() {
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                if (fabStatus == FabStatus.INVISIBLE) return
+                if (fabStatus == FabStatus.INVISIBLE || isFullyExpanded(slideOffset)) return
 
                 mainFab.animate().scaleX(1 + slideOffset).scaleY(1 + slideOffset).setDuration(0).start()
                 if (isFullyCollapsed(slideOffset)) {
