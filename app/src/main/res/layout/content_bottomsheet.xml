@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/bottomSheetInformation" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/problemsRecycler"
+        android:id="@+id/namesRecycler"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/blueLight"
