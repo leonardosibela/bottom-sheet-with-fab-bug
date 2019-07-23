@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
@@ -22,7 +23,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/layersFab"
+        android:id="@+id/displayBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|start"
@@ -32,6 +33,19 @@
         app:backgroundTint="@android:color/white"
         app:elevation="@dimen/fab_default_elevation"
         app:fabSize="mini"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/warningFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="@dimen/fab_margin_mini"
+        android:layout_marginTop="@dimen/distance_between_fabs_plus_fab_size"
+        android:src="@drawable/ic_warning"
+        app:backgroundTint="@android:color/holo_blue_dark"
+        app:elevation="@dimen/fab_default_elevation"
+        app:fabSize="mini"
+        app:tint="@android:color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mainFab"

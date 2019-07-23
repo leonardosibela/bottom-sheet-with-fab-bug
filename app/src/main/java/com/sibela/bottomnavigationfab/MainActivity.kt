@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_bottomsheet.*
 
 class MainActivity : AppCompatActivity(), StringAdapter.Callbacks {
 
     private val namesAdapter: StringAdapter by lazy { StringAdapter(this) }
+
     private var fabStatus = FabStatus.INVISIBLE
+    private var snackStatus = SnackStatus.INVISIBLE
+    private lateinit var snack: Snackbar
 
     private val bottomSheetBehavior: BottomSheetBehavior<MaterialCardView> by lazy {
         BottomSheetBehavior.from(bottomSheet)
@@ -28,9 +32,11 @@ class MainActivity : AppCompatActivity(), StringAdapter.Callbacks {
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
+        snack = getSnackbar()
         setupRecycler()
         setupBottomSheetFab()
-        layersFab.setOnClickListener { openBottomSheet() }
+        displayBottomSheet.setOnClickListener { openBottomSheet() }
+        warningFab.setOnClickListener { changeSnackState() }
     }
 
     private fun setupRecycler() {
@@ -83,7 +89,28 @@ class MainActivity : AppCompatActivity(), StringAdapter.Callbacks {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
     }
 
+    private fun changeSnackState() {
+        snackStatus = if (snackStatus == SnackStatus.INVISIBLE) {
+            snack.show()
+            SnackStatus.VISIBLE
+        } else {
+            snack.dismiss()
+            SnackStatus.INVISIBLE
+        }
+    }
+
+    private fun getSnackbar(): Snackbar {
+        val snack = Snackbar.make(container, "Warning message", Snackbar.LENGTH_INDEFINITE)
+        snack.setActionTextColor(getColor(R.color.colorAccent))
+        snack.view.setBackgroundColor(getColor(R.color.colorPrimaryDark))
+        return snack
+    }
+
     enum class FabStatus {
+        VISIBLE, INVISIBLE
+    }
+
+    enum class SnackStatus {
         VISIBLE, INVISIBLE
     }
 }
