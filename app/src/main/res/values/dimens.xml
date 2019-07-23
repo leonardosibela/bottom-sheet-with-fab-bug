@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="distance_between_fabs_plus_fab_size">72dp</dimen>
+    <dimen name="fab_margin_mini">16dp</dimen>
+    <dimen name="fab_margin_normal">16dp</dimen>
+    <dimen name="fab_default_elevation">16dp</dimen>
+</resources>

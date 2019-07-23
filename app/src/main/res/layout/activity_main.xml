@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomSheet"
+        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#eee"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <include layout="@layout/content_bottomsheet"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/layersFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_gravity="top|start"
+        android:layout_marginStart="@dimen/fab_margin_mini"
+        android:layout_marginTop="@dimen/fab_margin_mini"
+        android:src="@drawable/ic_layers_semi_transparent"
+        app:backgroundTint="@android:color/white"
+        app:elevation="@dimen/fab_default_elevation"
+        app:fabSize="mini"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fab_margin_normal"
+        android:layout_marginBottom="@dimen/fab_margin_normal"
+        android:src="@drawable/ic_assignment_white"
+        app:backgroundTint="@color/yellowDark"
+        app:elevation="@dimen/fab_default_elevation"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bottomSheet"
+        app:layout_anchorGravity="top|end"
+        app:rippleColor="@color/yellowLight"
+        app:tint="@android:color/white"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
